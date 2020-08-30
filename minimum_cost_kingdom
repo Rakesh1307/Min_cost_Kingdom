@@ -1,0 +1,25 @@
+function min(val1: number, val2: number) {
+    return val1 < val2 ? val1 : val2;
+}
+
+// different test cases given in commented lines, you can uncomment each and check for different test cases 
+// let arr = [300,400,600,700];
+// let arr = [1321,2450];
+// let arr = [500,123,873];
+let arr = [600, 800, 150, 700];
+
+let n = arr.length;
+let solution = 0;
+for (let i = 0; i < n; i++)
+    arr = arr.sort();
+while (n > 3) {
+    solution = solution + min((2 * arr[0] + arr[n - 1] + arr[n - 2]), (arr[0] + 2 * arr[1] + arr[n - 1]));
+    n -= 2;
+}
+if (n == 3)
+    solution += (arr[0] + arr[1] + arr[2]);
+else if (n == 2)
+    solution += arr[1];
+else
+    solution += arr[0];
+console.log(solution)
